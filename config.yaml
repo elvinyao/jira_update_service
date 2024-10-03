@@ -1,0 +1,64 @@
+# Jira Auto Update Service Configuration
+
+# Confluence Settings
+confluence_urls:
+  - https://your-company.atlassian.net/wiki/spaces/TEAM/pages/123456789
+  - https://your-company.atlassian.net/wiki/spaces/TEAM/pages/987654321
+
+# Jira Settings
+jira_url: https://your-company.atlassian.net
+
+# Bot Credentials
+bot_username: jira-update-bot@your-company.com
+bot_password: your-secure-password-here
+
+# Mattermost Settings
+mattermost_url: https://mattermost.your-company.com
+common_bot_token: your-mattermost-bot-token-here
+error_notice_channel_url: https://mattermost.your-company.com/hooks/xxx-your-webhook-url
+
+# Performance Settings
+thread_limit: 5  # Maximum number of concurrent Jira updates
+sleep_sec: 300   # Time between Confluence config checks (5 minutes)
+
+# Logging Settings
+log_path: ./logs
+log_max_days: 30
+log_max_size: 2097152  # 2MB in bytes
+
+# Retry Settings
+max_retries: 3
+retry_delay: 5  # seconds
+
+# Additional Settings
+csv_export_path: ./exports
+excel_template_path: ./templates/update_template.xlsx
+
+# Example Confluence Table Format
+# This is for reference only and not used in the code
+example_table_format:
+  columns:
+    - name: Description
+      required: true
+    - name: Creator
+      required: true
+    - name: JIRA Filter URL
+      required: true
+    - name: Update Config URL
+      required: true
+    - name: Cron Expression
+      required: true
+    - name: Mattermost Channel
+      required: true
+    - name: Bot Token Page URL
+      required: false
+    - name: Bot Message
+      required: true
+
+# Health Check Settings
+health_check:
+  enabled: true
+  timeout: 30  # seconds
+
+# Debug Mode (set to false in production)
+debug: false
